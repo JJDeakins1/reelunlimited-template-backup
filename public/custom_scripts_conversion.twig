@@ -1,0 +1,49 @@
+<script>
+dataLayer = [{
+'transactionTotal': "{{ invoice.total }}",
+'transactionCurrency': "{{ invoice.currency }}",
+'transactionID': "{{ invoice.transaction_id }}",
+'transactionPromoCode': "{{ invoice.coupon.code }}",
+'event': "awin.dl.ready"
+}];
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      event: "purchase_v2",
+      transactionTotal: "{{ invoice.total }}",
+      transactionCurrency: "{{ invoice.currency }}",
+      transactionID: "{{ invoice.transaction_id }}",
+      transactionPromoCode: "{{ invoice.coupon.code }}",
+    });
+  });
+</script>
+
+
+<script>
+    // Meta Purchase Event
+    if (typeof fbq !== "undefined") {
+        fbq("track", "Purchase", {
+            value: '{{ invoice.subtotal }}',
+            currency: '{{ invoice.currency }}',
+            content_type: "product",
+            content_ids: {{ invoice.items|column('service_id')|json_encode }}
+        });
+    }
+</script>
+<!‐‐ REFERSION TRACKING: BEGIN ‐‐>
+<script>
+  document.addEventListener("refersion-loaded", function() {
+    const rfsn = {
+    cart: "{{ user.stripe_id }}",
+    id: localStorage.getItem("rfsn_v4_id"),
+    url: window.location.href,
+    aid: localStorage.getItem("rfsn_v4_aid"),
+    cs: localStorage.getItem("rfsn_v4_cs")
+    };
+    r.sendCheckoutEvent(rfsn.cart, rfsn.id, rfsn.url, rfsn.aid, rfsn.cs);
+  });
+</script>
+<!‐‐ REFERSION TRACKING: END ‐‐>
