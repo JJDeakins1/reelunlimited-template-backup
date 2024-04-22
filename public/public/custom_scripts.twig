@@ -1,0 +1,54 @@
+<!--
+    <script>
+        // Meta pixel example
+        ...
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+ -->
+
+<!--
+    <script>
+        // Example of using the user variable
+        console.log({
+            email: '{{ user.email }}',
+        });
+    </script>
+ -->
+
+<!--
+   <style>
+       /* Example of modifying portal css */
+       body {
+           font-family: Arial, sans-serif;
+       }
+   </style>
+ -->
+<!‐‐ REFERSION TRACKING: BEGIN ‐‐>
+<script>
+! function(e, n, t, i, o, c, s, a) {
+e.TrackingSystemObject = "r", (s = n.createElement(t)).async = 1, s.src = "https://cdn.refersion.com/refersion.js", s.onload = function() {
+r.pubKey = "pub_bebda4f809a994300c02", r.settings.fp_off = !1;
+r.initializeXDLS().then(() => {
+r.launchDefault()
+})
+}, (a = n.getElementsByTagName(t)[0]).parentNode.insertBefore(s, a)
+}(window, document, "script");
+</script>
+<!-- REFERSION TRACKING: END -->
+<script defer data-domain="reelunlimited.com" src="https://plausible.io/js/script.js"></script>
+<script>
+    (function () {
+        const script = document.createElement('script');
+        script.src = 'https://widget.senja.io/js/rich-snippet.js';
+        script.async = true;
+
+        document.head.appendChild(script);
+
+        script.addEventListener('load', () => {
+            window.richSnippet({
+                project: '38ee50bd-630b-4dcc-8934-9eaeb4938a2f'
+            });
+        });
+    })();
+</script>
